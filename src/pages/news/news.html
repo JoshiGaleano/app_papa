@@ -1,0 +1,41 @@
+<ion-header>
+    <navbar [header]="header_data"></navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-segment [(ngModel)]="segment">
+        <ion-segment-button value="all">
+            Todo
+        </ion-segment-button>
+        <ion-segment-button value="cracovia">
+            Cracovia
+        </ion-segment-button>
+        <ion-segment-button value="poland">
+            Polonia
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="segment">
+        <div *ngSwitchCase="'all'">
+            <ion-card *ngFor="let new of news">
+                <span>{{new.post_date | date: 'yMMMd'}}</span>
+                <img [src]="new.featured_image" />
+                <ion-card-content>
+                    <ion-card-title [innerHTML]="new.post_title">
+                    </ion-card-title>
+                    <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(new.post_content_mini)"></div>
+                </ion-card-content>
+                <button ion-button (tap)="detailNew(new)">LEER MÁS</button>
+            </ion-card>
+        </div>
+    </div>
+
+    <ionc-pagination
+        color="primary"
+        (clickBeginning)="changePage(1)"
+        (clickPrevious)="changePage(paginationInfo.page - 1)"
+        (clickNext)="changePage(paginationInfo.page + 1)"
+        (clickEnd)="changePage(paginationInfo.pageCount)"
+        [pagination]="paginationInfo">
+    </ionc-pagination>
+</ion-content>

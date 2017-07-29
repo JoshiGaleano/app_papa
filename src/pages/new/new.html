@@ -1,0 +1,18 @@
+<ion-header>
+    <navbar [header]="header_data"></navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card>
+		<span>{{pNew.post_date | date: 'yMMMd'}}</span>
+    	<img [src]="pNew.featured_image" />
+
+    <ion-card-content>
+      <ion-card-title>
+        {{pNew.post_title}}
+      </ion-card-title>
+      <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(pNew.post_content)"></div>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

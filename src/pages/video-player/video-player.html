@@ -1,0 +1,11 @@
+<ion-header>
+    <navbar [header]="header_data"></navbar>
+</ion-header>
+
+<ion-content padding>
+   <ion-list>
+        <ion-item *ngFor="let video of videos">
+        	<iframe width="100%" height="315" [src]="video.src" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+        </ion-item>
+    </ion-list>
+</ion-content>

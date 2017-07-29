@@ -1,0 +1,12 @@
+{
+  "name": "app_papa",
+  "app_id": "",
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://app.campusuniversitario.net/api/v1"
+    }
+  ],
+  "watchPatterns": []
+}
